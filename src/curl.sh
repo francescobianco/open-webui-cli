@@ -2,10 +2,12 @@
 ##
 # Call CURL POST request to GitLab API.
 ##
-ci_curl_get() {
+webui_curl_get() {
     #ci_curl_init
 
-    local url="${GITLAB_PROJECTS_API_URL}/${CI_CURRENT_PROJECT_SLUG}/$1"
+    local url
+
+    url="${GITLAB_PROJECTS_API_URL}/${CI_CURRENT_PROJECT_SLUG}/$1"
 
     #[[ -n "${debug}" ]] && [[ "$2" != "NODEBUG" ]] && echo " --> GET ${url}"
 
@@ -19,7 +21,7 @@ ci_curl_get() {
 ##
 # Call CURL POST request to GitLab API.
 ##
-ci_curl_post() {
+web_curl_post() {
     #ci_curl_init
 
     local url
@@ -42,7 +44,7 @@ ci_curl_post() {
 ##
 # Call CURL POST request to GitLab API.
 ##
-ci_curl_put() {
+webui_curl_put() {
     ci_curl_init
 
     local url="${GITLAB_PROJECTS_API_URL}/${CI_CURRENT_PROJECT_SLUG}/$1"
@@ -68,13 +70,13 @@ ci_curl_catch() {
 
     case "$1" in
         0)
-            ci_curl_catch_success
+            #ci_curl_catch_success
             ;;
         22)
-            ci_curl_catch_status $1
+            #ci_curl_catch_status $1
             ;;
         *)
-            ci_curl_error
+            #ci_curl_error
             ;;
     esac
 }

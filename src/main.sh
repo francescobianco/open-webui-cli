@@ -1,5 +1,6 @@
 
 module webui
+module curl
 
 main() {
   local list
